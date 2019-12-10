@@ -15,13 +15,13 @@ class LunchForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.props.id) {
-      this.props.edit({id: this.props.id, name: this.state.name, cost: this.state.cost})
-      this.props.toggleEdit();
-    }
-    else {
-      this.props.add(this.state);
-    }
+    // if (this.props.id) {
+    //   this.props.edit({id: this.props.id, name: this.state.name, cost: this.state.cost})
+    //   this.props.toggleEdit();
+    // }
+    // else {
+      this.props.add(this.props.id, this.state);
+    
     this.setState({ name: "", cost: ""});
   }
 

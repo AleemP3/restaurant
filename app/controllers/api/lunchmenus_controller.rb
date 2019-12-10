@@ -1,16 +1,17 @@
 class Api::LunchmenusController < ApplicationController
   before_action :set_lunch, only: [:update, :destroy]
+  before_action :set_menu
 
   def index
-    render json: Lunchmenu.all 
+    render json: @menu.lunchmenus.order("created_at")
   end 
 
   def create
-    lunchmenu = Lunchmenu.new(lunch_params)
-      if lunchmenu.save 
-        render json: lunchmenu 
+    @lunchmenu = @menu.lunchmenus.new(lunch_params)
+      if @lunchmenu.save 
+        render json: @lunchmenu 
       else 
-        render json: { errors: lunchmenu.errors }
+        render json: { errors: @lunchmenu.errors }
       end 
   end 
 
@@ -27,6 +28,10 @@ class Api::LunchmenusController < ApplicationController
 
   def set_lunch
     @lunchmenu = Lunchmenu.find(params[:id])
+  end
+
+  def set_menu
+    @menu = Menu.find(params[:menu_id])
   end
 
   def lunch_params

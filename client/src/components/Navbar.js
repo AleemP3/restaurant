@@ -9,9 +9,9 @@ const Navbar = () => (
         Home
       </Menu.Item>
     </Link>
-    <Link to="/lunch">
+    <Link to="/menu">
       <Menu.Item>
-        Lunch Menu
+         Menu
       </Menu.Item>
     </Link>
   </Menu>
